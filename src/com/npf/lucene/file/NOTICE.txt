@@ -1,6 +1,6 @@
 Apache Lucene
 Copyright 2014 The Apache Software Foundation
-
+recommended
 This product includes software developed at
 The Apache Software Foundation (http://www.apache.org/).
 
