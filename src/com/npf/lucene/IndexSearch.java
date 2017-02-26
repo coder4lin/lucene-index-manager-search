@@ -32,7 +32,7 @@ public class IndexSearch {
 		//5.创建索引的搜索对象
 		IndexSearcher indexSearcher = createIndexSearcher(indexReader);
 		//搜索:第一个参数为查询语句对象, 第二个参数:指定显示多少条
-		TopDocs topdocs = indexSearcher.search(query, 5);
+		TopDocs topdocs = indexSearcher.search(query, 2);
 		//一共搜索到多少条记录
 		System.out.println("=====count=====" + topdocs.totalHits);
 		//从搜索结果对象中获取结果集
