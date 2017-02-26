@@ -36,11 +36,11 @@ public class IndexManager {
 		Analyzer analyzer = createAnalyzer();
 		//5.指定索引和文档存储的目录
 		Directory directory = createDirectory();
-		//6.创建索引写对象
+		//6.创建索引和文档的写对象
 		IndexWriter indexWriter = createIndexWriter(analyzer,directory);
-		//7.将文档加入索引写对象
+		//7.将文档加入索引和文档的写对象
 		addDocumentToIndexWriter(indexWriter,docList);
-		//8.提交和关闭索引写对象
+		//8.提交和关闭索引和文档的写对象
 		indexWriterCommitClose(indexWriter);
 	}
 	
@@ -101,12 +101,12 @@ public class IndexManager {
 	}
 	
 	/**
-	 * 创建索引写对象
+	 * 创建索引和文档的写对象
 	 */
 	public static IndexWriter createIndexWriter(Analyzer analyzer,Directory directory) throws Exception{
-		//创建写对象的初始化对象
+		//创建索引和文档的写对象的初始化对象
 		IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_4_10_3, analyzer);
-		//创建索引和文档写对象
+		//创建索引和文档的写对象
 		IndexWriter indexWriter = new IndexWriter(directory, config);
 		return indexWriter;
 	}
@@ -121,7 +121,7 @@ public class IndexManager {
 	}
 	
 	/**
-	 * 索引写对象的提交与关闭
+	 * 索引和文档的写对象的提交与关闭
 	 */
 	public static void indexWriterCommitClose(IndexWriter indexWriter) throws Exception{
 		indexWriter.commit();
