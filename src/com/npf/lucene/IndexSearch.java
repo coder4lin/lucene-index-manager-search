@@ -72,7 +72,7 @@ public class IndexSearch {
 	public static Query createQuery(Analyzer analyzer) throws Exception{
 		QueryParser queryParser = new QueryParser("fileContext", analyzer);
 		//查询语法=域名:搜索的关键字
-		Query query = queryParser.parse("fileName:web");
+		Query query = queryParser.parse("fileContext:recommended");
 		return query;
 	}
 	
