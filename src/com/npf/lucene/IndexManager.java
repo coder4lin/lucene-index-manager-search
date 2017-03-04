@@ -26,7 +26,7 @@ public class IndexManager {
 	
 	
 	public static void main(String[] args) throws Exception{
-		//1. 创建文档列表,保存多个Document
+		//1. 创建文档列表,用来保存多个Document
 		List<Document> docList = createDocumentList();
 		//2.获取源文件所在目录
 		File dir = getSourceFileDirectory(); 
@@ -34,14 +34,16 @@ public class IndexManager {
 		docList = lookupFileIntoDocument(docList,dir);
 		//4.创建分词器Analyzer
 		Analyzer analyzer = createAnalyzer();
-		//5.指定索引和文档存储的目录
+		//5.指定索引存储的目录
 		Directory directory = createDirectory();
-		//6.创建索引和文档的写对象
+		//6.创建索引写对象
 		IndexWriter indexWriter = createIndexWriter(analyzer,directory);
-		//7.将文档加入索引和文档的写对象
+		//7.将文档加入索引写对象中
 		addDocumentToIndexWriter(indexWriter,docList);
-		//8.提交和关闭索引和文档的写对象
-		indexWriterCommitClose(indexWriter);
+		//8.提交索引写对象
+		indexWriterCommit(indexWriter);
+		//9.关闭索引写对象
+		indexWriterClose(indexWriter);
 	}
 	
 	/**
@@ -101,7 +103,7 @@ public class IndexManager {
 	}
 	
 	/**
-	 * 创建索引和文档的写对象
+	 * 创建索引写对象
 	 */
 	public static IndexWriter createIndexWriter(Analyzer analyzer,Directory directory) throws Exception{
 		//创建索引和文档的写对象的初始化对象
@@ -112,7 +114,7 @@ public class IndexManager {
 	}
 	
 	/**
-	 * 将文档加入到索引和文档的写对象中
+	 * 将文档加入到索引写对象中
 	 */
 	public static void addDocumentToIndexWriter(IndexWriter indexWriter,List<Document> docList) throws Exception{
 		for(Document doc1 : docList){
@@ -121,10 +123,16 @@ public class IndexManager {
 	}
 	
 	/**
-	 * 索引和文档的写对象的提交与关闭
+	 * 索引写对象的提交
 	 */
-	public static void indexWriterCommitClose(IndexWriter indexWriter) throws Exception{
+	public static void indexWriterCommit(IndexWriter indexWriter) throws Exception{
 		indexWriter.commit();
+	}
+	
+	/**
+	 * 索引写对象的关闭
+	 */
+	public static void indexWriterClose(IndexWriter indexWriter) throws Exception{
 		indexWriter.close();
 	}
 }
