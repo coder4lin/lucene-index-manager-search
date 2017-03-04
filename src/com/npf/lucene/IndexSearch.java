@@ -45,6 +45,7 @@ public class IndexSearch {
 			//get域名可以取出值 打印
 			System.out.println("fileName:" + document.get("fileName"));
 			System.out.println("fileSize:" + document.get("fileSize"));
+			System.out.println("fileContext:" + document.get("fileContext"));
 			System.out.println("============================================================");
 		}
 	}
