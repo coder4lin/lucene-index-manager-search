@@ -25,9 +25,9 @@ public class IndexSearch {
 		Analyzer analyzer = createAnalyzer();
 		//2.创建查询对象
 		Query query = createQuery(analyzer);
-		//3.指定索引和文档的目录
+		//3.指定索引的目录
 		Directory dir = createDirectory();
-		//4.创建索引和文档的读取对象
+		//4.创建索引的读取对象
 		IndexReader indexReader = createIndexReader(dir);
 		//5.创建索引的搜索对象
 		IndexSearcher indexSearcher = createIndexSearcher(indexReader);
@@ -77,7 +77,7 @@ public class IndexSearch {
 	}
 	
 	/**
-	 * 指定索引和文档存储的目录
+	 * 指定索引的目录
 	 */
 	public static Directory createDirectory() throws Exception{
 		Directory directory = FSDirectory.open(new File(indexPath));
@@ -86,7 +86,7 @@ public class IndexSearch {
 	
 	
 	/**
-	 * 索引和文档的读取对象
+	 * 索引的读取对象
 	 */
 	public static IndexReader createIndexReader(Directory dir) throws Exception{
 		IndexReader indexReader = IndexReader.open(dir);
